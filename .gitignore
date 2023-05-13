@@ -70,3 +70,16 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+
+### DotnetCore ###
+# .NET Core build folders
+**/bin/
+**/obj/
+
+# Common node modules locations
+/node_modules
+/wwwroot/node_modules
+/.vscode
+/.vs
