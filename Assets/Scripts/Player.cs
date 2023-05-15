@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
     public bool inFloor = true;
     private Rigidbody2D _rbPlayer;
     private SpriteRenderer _spritePlayer;
+    private Animator _animatorPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        _animatorPlayer = GetComponent<Animator>();
         _spritePlayer = GetComponent<SpriteRenderer>();
         _rbPlayer = GetComponent<Rigidbody2D>();        
     }
@@ -36,11 +38,17 @@ public class Player : MonoBehaviour
 
         if (horizontalMoviment > 0)
         {
+            _animatorPlayer.SetBool("Walk", true);
             _spritePlayer.flipX = false;
         }
         else if (horizontalMoviment < 0)
         {
+            _animatorPlayer.SetBool("Walk", true);
             _spritePlayer.flipX = true;
+        }
+        else
+        {
+            _animatorPlayer.SetBool("Walk", false);
         }
     }
 
@@ -48,6 +56,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && inFloor)
         {
+            _animatorPlayer.SetBool("Jump", true);
             _rbPlayer.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             inFloor = false;
         }
@@ -57,6 +66,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.name == "Ground")
         {
+            _animatorPlayer.SetBool("Jump", false);
             inFloor = true;
         }
     }
