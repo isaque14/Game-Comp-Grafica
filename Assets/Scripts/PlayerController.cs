@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rbPlayer;
     private SpriteRenderer _spritePlayer;
     private Animator _animatorPlayer;
+    public int Coins;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +67,15 @@ public class PlayerController : MonoBehaviour
         {
             _animatorPlayer.SetBool("Jump", false);
             inFloor = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Coins")
+        {
+            Destroy(collision.gameObject);
+            Coins++;
         }
     }
 }
