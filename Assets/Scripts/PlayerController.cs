@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rbPlayer;
     private SpriteRenderer _spritePlayer;
     private Animator _animatorPlayer;
-    public int Coins;
+    private GameController _GCPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        _GCPlayer = GameController.GCInstance;
+        _GCPlayer.Coins = 0;
         _animatorPlayer = GetComponent<Animator>();
         _spritePlayer = GetComponent<SpriteRenderer>();
         _rbPlayer = GetComponent<Rigidbody2D>();
@@ -75,7 +77,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Coins")
         {
             Destroy(collision.gameObject);
-            Coins++;
+            _GCPlayer.Coins++;
+            _GCPlayer.CoinsText.text = _GCPlayer.Coins.ToString();
         }
     }
 }
