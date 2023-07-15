@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySkull : MonoBehaviour
 {
@@ -55,6 +56,12 @@ public class EnemySkull : MonoBehaviour
             collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             collision.gameObject.GetComponent<Animator>().SetBool("Jump", false);
+            Invoke("LoadScene", 1f);
         }
+    }
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene("Fase 1");
     }
 }
