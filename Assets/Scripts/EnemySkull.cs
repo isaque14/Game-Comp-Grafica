@@ -21,7 +21,6 @@ public class EnemySkull : MonoBehaviour
     {
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
         Ground = Physics2D.Linecast(GroundCheck.position, transform.position, GroundLayer);
-        Debug.Log(Ground);
 
         if (Ground == false)
         {
@@ -44,5 +43,18 @@ public class EnemySkull : MonoBehaviour
         Vector3 Scale = transform.localScale;
         Scale.x *= -1;
         transform.localScale = Scale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+       if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Animator>().SetTrigger("Dead");
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            collision.gameObject.GetComponent<Animator>().SetBool("Jump", false);
+        }
     }
 }
