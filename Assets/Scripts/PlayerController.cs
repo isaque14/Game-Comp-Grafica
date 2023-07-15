@@ -80,5 +80,18 @@ public class PlayerController : MonoBehaviour
             _GCPlayer.Coins++;
             _GCPlayer.CoinsText.text = _GCPlayer.Coins.ToString();
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            _rbPlayer.velocity = Vector2.zero;
+            //_rbPlayer.AddForce(Vector2.up * 5, ForceMode2D.Impulse);   
+            //collision.gameObject.GetComponent<SpriteRenderer>().flipY = true;
+            collision.gameObject.GetComponent<Animator>().SetTrigger("Dead");
+            collision.gameObject.GetComponent<EnemySkull>().enabled = false;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            Destroy(collision.gameObject, 1f);
+        }
     }
 }
