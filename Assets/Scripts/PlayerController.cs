@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             _GCPlayer.Coins++;
-            _GCPlayer.CoinsText.text = _GCPlayer.Coins.ToString();
+            GameController.GCInstance.RefreshScreen();
         }
 
         if (collision.gameObject.tag == "Enemy")

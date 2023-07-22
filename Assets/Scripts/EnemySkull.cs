@@ -51,17 +51,9 @@ public class EnemySkull : MonoBehaviour
 
        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Animator>().SetTrigger("Dead");
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            collision.gameObject.GetComponent<Animator>().SetBool("Jump", false);
-            Invoke("LoadScene", 1f);
+            collision.gameObject.GetComponent<PlayerLife>().LoseLife();
         }
     }
 
-    void LoadScene()
-    {
-        SceneManager.LoadScene("Fase 1");
-    }
+    
 }

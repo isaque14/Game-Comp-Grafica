@@ -9,21 +9,34 @@ public class GameController : MonoBehaviour
     public Text CoinsText;
     public int Coins;
 
+    public Text LifeText;
+    public int Lives = 3;
+
     void Awake()
     {
         if (GCInstance == null)
         {
             GCInstance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (GCInstance != this)
         {
             Destroy(gameObject);
         }
+        RefreshScreen();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetLives(int life)
     {
+        Lives += life;
         
+        if (Lives >= 0)
+            RefreshScreen();
+    }
+
+    public void RefreshScreen()
+    {
+        CoinsText.text = Coins.ToString();
+        LifeText.text = Lives.ToString();
     }
 }
