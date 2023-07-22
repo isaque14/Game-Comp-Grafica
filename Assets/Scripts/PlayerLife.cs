@@ -35,14 +35,19 @@ public class PlayerLife : MonoBehaviour
             }
             else
             {
-                Debug.Log("Game Over");
-                GameController.GCInstance.Lives = 0;
+                Invoke("LoadGameOver", 2f);
+                GameController.GCInstance.Lives = 3;
             }
         }
     }
     void LoadScene()
     {
         SceneManager.LoadScene("Fase 1");
+    }
+
+    void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
     }
 
 }
