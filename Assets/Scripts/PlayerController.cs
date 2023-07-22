@@ -77,7 +77,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Coins")
         {
             Destroy(collision.gameObject);
-            _GCPlayer.Coins++;
+            //_GCPlayer.Coins++;
+            _GCPlayer.SetCoins(1);
             GameController.GCInstance.RefreshScreen();
         }
 

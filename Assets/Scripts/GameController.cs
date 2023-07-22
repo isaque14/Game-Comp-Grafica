@@ -39,4 +39,14 @@ public class GameController : MonoBehaviour
         CoinsText.text = Coins.ToString();
         LifeText.text = Lives.ToString();
     }
+
+    public void SetCoins(int coin)
+    {
+        Coins += coin;
+        if (Coins >= 25)
+        {
+            Coins = 0;
+            Lives += 1;
+        }
+    }
 }
