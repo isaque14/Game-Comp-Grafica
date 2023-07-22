@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spritePlayer;
     private Animator _animatorPlayer;
     private GameController _GCPlayer;
+    private const int _LayerGround = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -65,10 +66,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.layer == _LayerGround)
         {
             _animatorPlayer.SetBool("Jump", false);
             inFloor = true;
+        }
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            gameObject.transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+        {
+            gameObject.transform.parent = null;
         }
     }
 
