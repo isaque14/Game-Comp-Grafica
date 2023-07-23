@@ -12,6 +12,16 @@ public class GameController : MonoBehaviour
     public Text LifeText;
     public int Lives = 3;
 
+    public Text TimeText;
+    public float TimeCount;
+    public bool TimeOver = false;
+
+
+    private void Update()
+    {
+        TimerCount();
+    }
+
     void Awake()
     {
         if (GCInstance == null)
@@ -38,6 +48,25 @@ public class GameController : MonoBehaviour
     {
         CoinsText.text = Coins.ToString();
         LifeText.text = Lives.ToString();
+        TimeText.text = TimeCount.ToString("F0");
+    }
+
+    void TimerCount()
+    {
+        TimeOver = false;
+
+        if (!TimeOver && TimeCount > 0)
+        {
+            TimeCount -= Time.deltaTime;
+            RefreshScreen();
+
+            if(TimeCount <= 0)
+            {
+                TimeCount = 0;
+                GameObject.Find("Player").GetComponent<PlayerLife>().LoseLife();
+                TimeOver = true;
+            }
+        }
     }
 
     public void SetCoins(int coin)

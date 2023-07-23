@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     public bool alive = true;
+    private const int TimeLevel = 120;
+    private const int BaseLifes = 3;
+
     void Start()
     {
         GameController.GCInstance.RefreshScreen();
@@ -36,13 +39,14 @@ public class PlayerLife : MonoBehaviour
             else
             {
                 Invoke("LoadGameOver", 2f);
-                GameController.GCInstance.Lives = 3;
+                GameController.GCInstance.Lives = BaseLifes;
             }
         }
     }
     void LoadScene()
     {
         SceneManager.LoadScene("Fase 1");
+        GameController.GCInstance.TimeCount = TimeLevel;
     }
 
     void LoadGameOver()
