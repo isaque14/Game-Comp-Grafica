@@ -24,6 +24,8 @@ public class PlayerLife : MonoBehaviour
     {
         if (alive)
         {
+            GetComponent<PlayerController>().AudioS.clip = GetComponent<PlayerController>().Sonds[1];
+            GetComponent<PlayerController>().AudioS.Play();
             alive = false;
             gameObject.GetComponent<Animator>().SetTrigger("Dead");
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -51,6 +53,7 @@ public class PlayerLife : MonoBehaviour
 
     public void LoadGameOver()
     {
+        GameObject.Find("MusicPlayer").GetComponent<AudioSource>().enabled = false;
         SceneManager.LoadScene("Game Over");
         GameController.GCInstance.TimeCount = 0;
         GameController.GCInstance.Lives = 0;

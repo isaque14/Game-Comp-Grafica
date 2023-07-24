@@ -12,6 +12,13 @@ public class Menu : MonoBehaviour
         GameController.GCInstance.TimeCount = TimeLevel;
         GameController.GCInstance.Lives = InitialLives;
         GameController.GCInstance.Coins = 0;
+        GameObject.Find("MusicPlayer").GetComponent<AudioSource>().enabled = true;
+    }
+
+    public void ButtonReturn(string cene)
+    {
+        SceneManager.LoadScene(cene);
+        GameObject.Find("MusicPlayer").GetComponent<AudioSource>().enabled = false;
     }
 
     public void Exit()

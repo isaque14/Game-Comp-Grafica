@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private GameController _GCPlayer;
     private const int _LayerGround = 6;
 
+    public AudioSource AudioS;
+    public AudioClip[] Sonds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && inFloor)
         {
+            AudioS.clip = Sonds[3];
+            AudioS.Play();
             _animatorPlayer.SetBool("Jump", true);
             _rbPlayer.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             inFloor = false;
@@ -90,6 +95,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Coins")
         {
+            AudioS.clip = Sonds[0];
+            AudioS.Play();
             Destroy(collision.gameObject);
             //_GCPlayer.Coins++;
             _GCPlayer.SetCoins(1);
@@ -98,6 +105,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
+            AudioS.clip = Sonds[2];
+            AudioS.Play();
             _rbPlayer.velocity = Vector2.zero;
             //_rbPlayer.AddForce(Vector2.up * 5, ForceMode2D.Impulse);   
             //collision.gameObject.GetComponent<SpriteRenderer>().flipY = true;
