@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public float TimeCount;
     public bool TimeOver = false;
 
+    public GameObject TextNextLevel;
 
     private void Update()
     {
@@ -63,7 +64,7 @@ public class GameController : MonoBehaviour
             if(TimeCount <= 0)
             {
                 TimeCount = 0;
-                GameObject.Find("Player").GetComponent<PlayerLife>().LoseLife();
+                GameObject.Find("Player").GetComponent<PlayerLife>().LoadGameOver();
                 TimeOver = true;
             }
         }

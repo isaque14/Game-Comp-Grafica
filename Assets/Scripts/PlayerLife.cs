@@ -49,9 +49,13 @@ public class PlayerLife : MonoBehaviour
         GameController.GCInstance.TimeCount = TimeLevel;
     }
 
-    void LoadGameOver()
+    public void LoadGameOver()
     {
         SceneManager.LoadScene("Game Over");
+        GameController.GCInstance.TimeCount = 0;
+        GameController.GCInstance.Lives = 0;
+        GameController.GCInstance.Coins = 0;
+        GameController.GCInstance.RefreshScreen();
     }
 
 }
