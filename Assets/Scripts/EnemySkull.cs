@@ -9,7 +9,7 @@ public class EnemySkull : MonoBehaviour
     public bool Ground = true;
     public Transform GroundCheck;
     public LayerMask GroundLayer;
-    public bool FacinRight = true;
+    public bool FacinRight = false;
 
     // Start is called before the first frame update
     void Start()

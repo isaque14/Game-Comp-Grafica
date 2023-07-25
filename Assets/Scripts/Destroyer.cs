@@ -8,7 +8,7 @@ public class Destroyer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerLife>().LoseLife();
+            collision.GetComponent<PlayerLife>().LoadGameOver();
         }
     }
 }

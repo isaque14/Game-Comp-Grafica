@@ -41,7 +41,7 @@ public class Platform : MonoBehaviour
             {
                 MoveUp = false;
             }
-            else if (transform.position.y < -1.64f)
+            else if (transform.position.y < -2.94f)
             {
                 MoveUp = true;
             }

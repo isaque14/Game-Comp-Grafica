@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Coleta moedas
         if (collision.gameObject.tag == "Coins")
         {
             AudioS.clip = Sonds[0];
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
             GameController.GCInstance.RefreshScreen();
         }
 
+        //Mata inimigo com pulo
         if (collision.gameObject.tag == "Enemy")
         {
             AudioS.clip = Sonds[2];
