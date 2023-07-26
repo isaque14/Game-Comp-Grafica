@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    private const int TimeLevel = 120;
+    private const int TimeLevel = 300;
     private const int InitialLives = 3;
 
     public void LoadScenes(string cene)
