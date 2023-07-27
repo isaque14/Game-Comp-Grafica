@@ -9,12 +9,12 @@ public class EnemySkull : MonoBehaviour
     public bool Ground = true;
     public Transform GroundCheck;
     public LayerMask GroundLayer;
-    public bool FacinRight = false;
+    public bool FacinRight = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class EnemySkull : MonoBehaviour
             Speed *= -1;
         }
 
-        if (Speed > 0 && !FacinRight) 
+        if (Speed > 0 && !FacinRight)
         {
             Flip();
         }
@@ -49,11 +49,11 @@ public class EnemySkull : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-       if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerLife>().LoseLife();
         }
     }
 
-    
+
 }
