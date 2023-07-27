@@ -4500,6 +4500,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGoblin
       objectReference: {fileID: 0}
+    - target: {fileID: 4322632221131315527, guid: 9847616d47a357b4299488a621e7c037, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 4802273158619273639, guid: 9847616d47a357b4299488a621e7c037, type: 3}
       propertyPath: m_RootOrder
       value: 14

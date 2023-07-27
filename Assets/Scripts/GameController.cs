@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController GCInstance;
     public Text CoinsText;
     public int Coins;
-    public const int NumberOfCoinsForNewLife = 100;
+    public const int NumberOfCoinsForNewLife = 20;
 
     public Text LifeText;
     public int Lives = 3;
