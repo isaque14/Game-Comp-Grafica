@@ -16,11 +16,11 @@ public class Platform : MonoBehaviour
     {
         if (HorizontalPlatform)
         {
-            if (transform.position.x > -5)
+            if (transform.position.x > -9.59)
             {
                 MoveRight = false;
             }
-            else if (transform.position.x < -8)
+            else if (transform.position.x < 21.54)
             {
                 MoveRight = true;
             }
